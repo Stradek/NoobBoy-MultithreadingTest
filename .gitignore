@@ -11,3 +11,10 @@ Makefile
 .vscode
 bootrom/bin
 bootrom/obj
+external
+.idea
+NoobBoy.dir
+*.vcxproj
+*.vcxproj.filters
+*.sln
+x64
