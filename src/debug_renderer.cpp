@@ -1,5 +1,9 @@
 #include "renderer.h"
 
+#ifdef _WINDOWS
+#include <windows/windows_types.h>
+#endif
+
 void DebugRenderer::init() {
     viewport_pixels.fill(0xFF);
     tilemap_pixels.fill(0xFF);

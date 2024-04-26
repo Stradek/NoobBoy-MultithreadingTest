@@ -3,7 +3,10 @@
 #include <algorithm>
 #include <cmath>
 #include <stdio.h>
+
+#ifndef _WINDOWS
 #include <unistd.h>
+#endif
 
 APU::APU(Status *status, MMU *mmu) {
   this->status = status;

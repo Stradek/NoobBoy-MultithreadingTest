@@ -3,7 +3,10 @@
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_ttf.h>
 #include <stdlib.h>
+
+#ifndef _WINDOWS
 #include <unistd.h>
+#endif
 
 #include <array>
 #include <bitset>

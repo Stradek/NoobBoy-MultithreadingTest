@@ -11,11 +11,14 @@
 
 #include <iostream>
 #include <cstdint>
-#include <unistd.h>
 #include <set>
 #include <chrono>
 #include <thread>
+
+#ifndef _WINDOWS
 #include <getopt.h>
+#include <unistd.h>
+#endif
 
 class GB{
     public:
