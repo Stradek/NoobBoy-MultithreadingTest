@@ -11,7 +11,7 @@ Makefile
 .vscode
 bootrom/bin
 bootrom/obj
-external
+external/*
 .idea
 NoobBoy.dir
 *.vcxproj
