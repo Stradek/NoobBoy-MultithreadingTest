@@ -5,7 +5,12 @@ NoobBoy is a simple gameboy emulator that I'm writing to learn more about the wo
 <img src="screenshots/mario_debug.png" width="800">
 
 ## Usage
-To build the project, `cmake`, `SDL2` and `SDL2 ttf` are required. The SDL2 cmake files are already included, as in some systems cmake can't find the packages. The emulator was tested on Linux and MacOS.
+The emulator was tested on Linux and MacOS. It doesn't work on Windows yet. The SDL2 cmake files are already included, as in some systems cmake can't find the packages.
+### Linux and MacOS
+To build the project on Linux and MacOS, `cmake`, `SDL2` and `SDL2 ttf` are required.  
+### Windows
+To build the project on Windows, `cmake`, `SDL2`, `SDL2 ttf`, `SDL2 mixer` and `SDL2 image` are required. 
+After downloading binary distributions of `SDL2`, `SDL2 ttf`, `SDL2 mixer` and `SDL2 image` place them in the external directory. `SDL2` `SDL2 ttf`, and `SDL2 image` headers should be placed in `external/include/SDL2`. `SDL2 mixer` headers should be placed in `external/include/SDL2_mixer`. All libraries should be placed in `external/lib`.
 
 ### Building
 ```
