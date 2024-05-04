@@ -3,11 +3,16 @@ project (NoobBoy)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
-set(EXTERNAL_LIBS_DIR "${PROJECT_SOURCE_DIR}/external/")
+set(EXTERNAL_DIR "${PROJECT_SOURCE_DIR}/external")
+set(EXTERNAL_LIBRARIES_DIR "${EXTERNAL_DIR}/lib")
+set(EXTERNAL_INCLUDE_DIRECTORIES "${EXTERNAL_DIR}/include")
 
-find_package(SDL2 REQUIRED PATHS "${EXTERNAL_LIBS_DIR}")
-find_package(SDL2_ttf REQUIRED PATHS "${EXTERNAL_LIBS_DIR}")
-find_package(SDL2_mixer REQUIRED PATHS "${EXTERNAL_LIBS_DIR}")
+if(NOT WIN32)
+    find_package(SDL2 REQUIRED)
+    find_package(SDL2_ttf REQUIRED)
+    find_package(SDL2_mixer REQUIRED)
+    find_package(SDL2_image REQUIRED)
+endif()
 
 include_directories("/usr/local/include")
 include_directories("/opt/homebrew/include")
@@ -24,5 +29,15 @@ file (GLOB SOURCE_FILES "${SOURCE_DIR}/*.cpp")
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
-target_include_directories(${PROJECT_NAME} PRIVATE "${EXTERNAL_LIBS_DIR}/include")
-target_link_libraries(${PROJECT_NAME} SDL2::Main SDL2::TTF SDL2::Mixer)
+
+if (WIN32)
+    target_include_directories(${PROJECT_NAME} PRIVATE "${EXTERNAL_INCLUDE_DIRECTORIES}")
+    target_link_libraries(${PROJECT_NAME} 
+        "${EXTERNAL_LIBRARIES_DIR}/SDL2.lib" 
+        "${EXTERNAL_LIBRARIES_DIR}/SDL2_image.lib"
+        "${EXTERNAL_LIBRARIES_DIR}/SDL2_mixer.lib" 
+        "${EXTERNAL_LIBRARIES_DIR}/SDL2_ttf.lib" 
+        "${EXTERNAL_LIBRARIES_DIR}/SDL2main.lib")
+else()
+    target_link_libraries(${PROJECT_NAME} SDL2::Main SDL2::TTF SDL2::Mixer)
+endif()

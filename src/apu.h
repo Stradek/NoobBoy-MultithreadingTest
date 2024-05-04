@@ -3,7 +3,12 @@
 #include "mmu.h"
 #include "status.h"
 
+#ifdef _WIN32
+#include <SDL.h>
+#else
 #include <SDL2/SDL.h>
+#endif
+
 #include <vector>
 
 union NRx1{

@@ -1,6 +1,6 @@
 #include "renderer.h"
 
-#ifdef _WINDOWS
+#ifdef _WIN32
 #include <windows/windows_types.h>
 #endif
 
